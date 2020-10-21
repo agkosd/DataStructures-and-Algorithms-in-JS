@@ -43,43 +43,46 @@ class mySet {
 
   interSection(otherSet) {
     var firstSet = this.values();
-    var secondSet = otherSet.values();
     var interSection = new mySet();
     firstSet.forEach((e) => {
-      if (secondSet.has(e)) {
+      if (otherSet.has(e)) {
         interSection.add(e);
       }
     });
+    return interSection;
   }
 
   difference(otherSet) {
     var firstSet = this.values();
-    var secondSet = otherSet.values();
     var differenceSet = new mySet();
     firstSet.forEach((e) => {
-      if (!secondSet.has(e)) {
+      if (!otherSet.has(e)) {
         differenceSet.add(e);
       }
     });
+    return differenceSet;
   }
 
-  subSet(otherSet){
-    var secondSet = otherSet.values();
-    var firstSet=this.values();
-    firstSet.every((e)=>{
-        if(secondSet.has(e)){
-            return true;
-        }
+  subSet(otherSet) {
+    var firstSet = this.values();
+    return firstSet.every((e) => {
+      return otherSet.has(e);
     });
   }
-  values(){
-      return this.collection;
+  values() {
+    return this.collection;
   }
 }
 
-
-let s1 = new mySet();
-s1.add(2);
-s1.add(3);
-s1.add(3);
-console.log(s1.values());
+// let s1 = new mySet();
+// let s2 = new mySet();
+// s1.add(2);
+// s1.add(3);
+// s1.add(3);
+// s2.add(1);
+// console.log(s2.subSet(s1));
+// console.log(s1.values());
+// console.log(s2.union(s1).values());
+// console.log(s2.interSection(s1).values());
+// console.log(s1);
+// console.log(s2.difference(s1).values());
